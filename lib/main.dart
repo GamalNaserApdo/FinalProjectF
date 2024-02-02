@@ -1,91 +1,126 @@
 import 'package:flutter/material.dart';
 
+
+
 void main() {
-  runApp(LoginApp());
+  runApp(const MyApp());
 }
 
-class LoginApp extends StatelessWidget {
+class MyApp extends StatelessWidget {           // mesh 7yp2a feha ta8erat
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage(),
+      title: 'My App',
+      home: Scaffold(
+        body: Container(
+          child: const Column(
+            children: [
+
+            ],
+          ),
+        ),
+      )
     );
   }
 }
 
-  class LoginPage extends StatefulWidget{ 
-    @override
-    _LoginPageState createState() => _LoginPageState();
-  }
-
-class _LoginPageState  extends State<LoginPage>{
-
-  TextEditingController _usernameController = TextEditingController() ;
-  TextEditingController _passwordController = TextEditingController() ;
 
 
-  void _login()
-  { 
-      String username = _usernameController.text ;
-      String password = _usernameController.text ;
+class MyHomePage extends StatefulWidget {           // de ma3naha en 7yp2a feha mo8erat   (7ala kapla le el ta8eer)
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("user name : $username /n Password : $password") ,
+  final String title;
 
-        ),
-      );
-  }
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
+class _MyHomePageState extends State<MyHomePage> {    // wakef 3and de pt3mdel aeh
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("First App"),
-      ),
-      body: 
-      
-      Container(
 
-        color: Colors.white,
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 50,
+          ),
+          const FlutterLogo(
+            size: 100,
+          ),
 
-child:Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-
-          children: [
-            TextField(
-              controller: _usernameController,
-              decoration: const InputDecoration(
-                labelText: "UserName:",
-                labelStyle: TextStyle(color: Colors.white),
-              ),
-            ),
-          SizedBox(height: 20,) ,
-          TextField(
-            controller: _passwordController,
-            obscureText: true,
-            decoration: const InputDecoration(
-              labelText: "Password" ,
-                labelStyle: TextStyle(color: Colors.white),
-
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: TextFormField(
+              decoration: const InputDecoration(labelText: "Phone Number"),
             ),
           ),
-          SizedBox(height: 20,) , 
-          ElevatedButton(onPressed: _login, child: Text("Login") ,          
-          )
-          ],
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: TextFormField(
+              decoration: const InputDecoration(labelText: "password"),
+            ),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          InkWell(          // lma akon 3aez a3mel clicable area
+            onTap: (){  
+              print("Log In");      // awl mayd8at 3la el button   7ytpa3 log in fe el terminla
+            },
+         child: Container(    // men awel hena shakl el button 
+          width: 300,
+            height: 50,
+            decoration: BoxDecoration(    // el satr da pa3melo 3ashan alw 3aez adef color m3a radius
+              color: Colors.blue[300],
+            borderRadius: BorderRadius.circular(5),
+            ),
+           child: const Center(
+             child: Text("Log In",
+               style: TextStyle(
+                 color: Colors.white,
+               fontSize: 18,
+               fontWeight: FontWeight.bold,
+             ),
+           ),
+          ),
+          ),
+          ),
+          const SizedBox(       // empty
+            height: 30,
+          ),
+          const Text("Forgot password? yawa.Tap me"),
+          const SizedBox(
+            height: 20,
+          ),
 
-
-        ),
+        
+      InkWell(
+        onTap: (){
+          print("Log In");
+        },
+        child: Container(
+            width: 300,
+            height: 40,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(3),
+            ),
+            child: const Center(
+              child: Text("No Account?Sign Up",
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
       ),
-      )
+      ],
+      ),
     );
-
-
-      
-        }
-
-}  // class LoginPage
-
-
-
+  }
+}
