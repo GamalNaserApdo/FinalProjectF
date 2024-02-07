@@ -1,6 +1,8 @@
-import 'package:creativa/view/login.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_group_1/firebase_options.dart';
+import 'package:flutter_group_1/views/screens/splash_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Tasking(),
+      // home: Tasking(),
     );
   }
 }
